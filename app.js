@@ -8,22 +8,22 @@ stdin.setEncoding('utf8');
 process.stdout.write('\033c'); // clear
 console.log('WELCOME to the fancy ¡nterƒeud! lockout buzzer system!\n');
 
+function clear () { process.stdout.write('\033c'); }
+function beep () { process.stdout.write('\x07'); };
+
 stdin.on('data', function(key) {
-  // ctrl-c ( end of text )
-  if (key === '\u0003') {
-    process.exit();
-  }
-  // lockout buzzer
-  if (!locked) {
-    process.stdout.write('\x07'); // beep
-    process.stdout.write('\033c'); // clear
-    console.log('THE WINNER IS: ' + key);
-  }
-  locked = true;
-  // reset on escape key
-  if (key === '\u001B') {
-    process.stdout.write('\033c'); // clear
-    console.log('Ready…');
-    locked = false;
+  switch (key) {
+    case '\u0003': process.exit(0); break; // ctrl+c
+    case '\u001B': // esc
+      clear();
+      console.log('Ready…');
+      locked = false;
+      break;
+    default:
+      if (locked) break;
+      beep();
+      clear();
+      console.log('THE WINNER IS: ' + key);
+      locked = true;
   }
 });
