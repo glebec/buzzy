@@ -9,7 +9,7 @@
   "author": "Gabriel Lebec <glebec@gmail.com> (https://github.com/glebec)",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "1.14.1",
-    "express": "4.13.3"
+    "body-parser": "1.16.0",
+    "express": "4.14.0"
   }
 }
