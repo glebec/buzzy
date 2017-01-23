@@ -1,5 +1,7 @@
 # Buzzy
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/glebec/buzzy.svg)](https://greenkeeper.io/)
+
 ## A minimal buzzer app for quiz shows
 
 Buzzy provides a bare-bones lockout buzzer keypress system for home-brewed quiz shows.
